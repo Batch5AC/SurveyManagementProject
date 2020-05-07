@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.survey.loginservice.pojo.AdminDataPojo;
 import com.survey.loginservice.pojo.AdminLoginPojo;
 import com.survey.loginservice.pojo.LoginPojo;
@@ -55,6 +56,7 @@ import com.survey.loginservice.service.LoginService;
 			return this.loginService.checkAdmin(adminLoginPojo);
 		}
 		@GetMapping("question")
+		@HystrixCommand(fallbackMethod = "getFallbackCatalog")
 		QuestionPojo getQuestions(){
 				
 				RestTemplate restTemplate = new RestTemplate();
@@ -65,6 +67,8 @@ import com.survey.loginservice.service.LoginService;
 			QuestionPojo questionpojo = restTemplate.getForObject("http://localhost:8182/question-service/survey/questions", QuestionPojo.class);
 		return questionpojo;
 			}
+		
+		QuestionPojo getFallbackCatalog() {
+			return new QuestionPojo(0,"server down","server down","server down","server down","server down","server down");
+		}
 	}
-
-
