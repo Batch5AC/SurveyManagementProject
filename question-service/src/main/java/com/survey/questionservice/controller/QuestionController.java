@@ -1,9 +1,6 @@
 package com.survey.questionservice.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,22 +10,19 @@ import com.survey.questionservice.Pojo.QuestionPojo;
 import com.survey.questionservice.service.QuestionService;
 
 @RestController
-@RequestMapping("survey") 
+@RequestMapping("survey")
 @CrossOrigin
 
 public class QuestionController {
 	@Autowired
 	QuestionService queService;
-	
-	
-    @GetMapping("questions")
-    QuestionPojo getQuestions(){
-	//EmployeeService empService=new EmployeeServiceImpl();
-	
-	return queService.getQuestions();
 
+	// Using get mapping to retreive questions from DB
+	@GetMapping("question")
+	QuestionPojo getQuestions() {
+	
+		return queService.getQuestions();
 
-}
-
+	}
 
 }

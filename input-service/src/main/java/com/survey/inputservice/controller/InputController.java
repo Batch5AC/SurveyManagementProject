@@ -16,23 +16,18 @@ import com.survey.inputservice.service.InputService;
 @RequestMapping("survey")
 public class InputController {
 	static Logger LOG = Logger.getLogger(InputController.class.getClass());
-	
+
 	@Autowired
 	InputService inputService;
-	
-	
-	@PostMapping("input")
 
-	InputPojo addInput(@RequestBody InputPojo inputPojo)
-	{
+	// updating answers to database using this method
+	@PostMapping("input")
+	InputPojo addInput(@RequestBody InputPojo inputPojo) {
 		BasicConfigurator.configure();
 		LOG.info("entered controller addInput()");
 
 		LOG.info("exited controller addInput()");
 		return inputService.addInput(inputPojo);
 	}
-	
-	
-	
 
 }

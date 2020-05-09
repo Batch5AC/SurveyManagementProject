@@ -2,7 +2,6 @@ package com.survey.loginservice.pojo;
 
 public class QuestionPojo {
 
-
 	private int qid;
 
 	private String question1;
@@ -14,7 +13,7 @@ public class QuestionPojo {
 	private String question4;
 
 	private String question5;
-	 
+
 	private String question6;
 
 	public int getQid() {
@@ -97,5 +96,4 @@ public class QuestionPojo {
 		// TODO Auto-generated constructor stub
 	}
 
- 
 }
