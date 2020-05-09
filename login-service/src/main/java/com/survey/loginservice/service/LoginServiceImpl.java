@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.survey.loginservice.dao.AdminDataDao;
 import com.survey.loginservice.dao.AdminLoginDao;
@@ -21,6 +22,8 @@ import com.survey.loginservice.exceptions.AdminNotFoundException;
 import com.survey.loginservice.pojo.AdminDataPojo;
 import com.survey.loginservice.pojo.AdminLoginPojo;
 import com.survey.loginservice.pojo.LoginPojo;
+import com.survey.loginservice.pojo.QuestionPojo;
+import com.survey.loginservice.pojo.UserOutputPojo;
 @Service
 
 public class LoginServiceImpl implements LoginService{
@@ -32,7 +35,7 @@ AdminLoginDao adminLoginDao;
 @Autowired
 AdminDataDao adminDataDao;
 	@Override
-public ResponseEntity<LoginPojo> checkUser(LoginPojo loginPojo) {
+public ResponseEntity<UserOutputPojo> checkUser(LoginPojo loginPojo) {
 		
 		// TODO Auto-generated method stub
 		LOG.info("Entered checkUser() service");
@@ -44,9 +47,17 @@ public ResponseEntity<LoginPojo> checkUser(LoginPojo loginPojo) {
         //checking for the existence of buyer entity
 		
 		if (loginEntity!= null) {
-			loginPojo = new LoginPojo(loginEntity.getId(), loginEntity.getUsername(),
-					null);
-		ResponseEntity<LoginPojo> result= new ResponseEntity<LoginPojo>(loginPojo,HttpStatus.OK);
+			
+
+			RestTemplate restTemplate = new RestTemplate();
+			  
+			
+		QuestionPojo questionpojo = restTemplate.getForObject("http://localhost:8182/question-service/survey/questions", QuestionPojo.class);
+		UserOutputPojo	resultPojo = new UserOutputPojo(loginEntity.getId(), loginEntity.getUsername(),
+					null,questionpojo);
+			
+			
+		ResponseEntity<UserOutputPojo> result= new ResponseEntity<UserOutputPojo>(resultPojo,HttpStatus.OK);
 			LOG.info("Exited checkUser() service");
 			BasicConfigurator.resetConfiguration();
 			return result;

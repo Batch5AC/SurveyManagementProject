@@ -23,6 +23,7 @@ import com.survey.loginservice.entity.LoginEntity;
 import com.survey.loginservice.pojo.AdminDataPojo;
 import com.survey.loginservice.pojo.AdminLoginPojo;
 import com.survey.loginservice.pojo.LoginPojo;
+import com.survey.loginservice.pojo.UserOutputPojo;
 import com.survey.loginservice.service.LoginServiceImpl;
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -44,21 +45,9 @@ private AdminLoginDao admindao;
 		
 		
 		when(dao.findByUsernameAndPassword("ram","ram125")).thenReturn(inputEntity);
-		ResponseEntity<LoginPojo> result=loginservice.checkUser(inputPojo);
+		ResponseEntity<UserOutputPojo> result=loginservice.checkUser(inputPojo);
 		assertEquals(200, result.getStatusCodeValue());
 	    assertEquals(true, result.hasBody());
 	}
-	/*	@Test
-void AdmintestInput() throws Exception {
-		
-		AdminLoginEntity inputEntity = new AdminLoginEntity(44,"xyz","123");
-		AdminLoginPojo inputPojo = new AdminLoginPojo(0,"xyz","123");
-		
-		
-		when(admindao.findByUsernameAndPassword("xyz","123")).thenReturn(inputEntity);
-		ResponseEntity<List<AdminDataPojo>> result=loginservice.checkAdmin(inputPojo);
-		assertEquals(200, result.getStatusCodeValue());
-	    assertEquals(true, result.hasBody());
-	}*/
-
+	
 }
