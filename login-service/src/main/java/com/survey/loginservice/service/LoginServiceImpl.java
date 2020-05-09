@@ -53,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
 			RestTemplate restTemplate = new RestTemplate();
 
 			QuestionPojo questionpojo = restTemplate
-					.getForObject("http://localhost:8182/question-service/survey/questions", QuestionPojo.class);
+					.getForObject("http://localhost:8182/question-service/survey/question", QuestionPojo.class);
 			UserOutput resultPojo = new UserOutput(loginEntity.getId(), loginEntity.getUsername(), null, questionpojo);
 
 			ResponseEntity<UserOutput> result = new ResponseEntity<UserOutput>(resultPojo, HttpStatus.OK);
