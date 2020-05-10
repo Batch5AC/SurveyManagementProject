@@ -37,8 +37,7 @@ public class LoginServiceImpl implements LoginService {
 	AdminDataDao adminDataDao;
 
 	@Override
-	// validating user credentials and retrieving the questions if user validation
-	// is sucessful else throwing an exception
+	// validating user credentials and retrieving the questions if user validation is sucessful else throwing an exception
 	public ResponseEntity<UserOutput> checkUser(LoginPojo loginPojo) {
 
 		// TODO Auto-generated method stub
@@ -67,8 +66,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	// validating admin credentials and if succesful retrieving the all the answers
-	// given by users else throwing exception
+	// validating admin credentials and if succesful retrieving the all the answers given by users else throwing exception
 	public ResponseEntity<List<AdminDataPojo>> checkAdmin(AdminLoginPojo adminLoginPojo) {
 		LOG.info("Entered checkAdmin() service");
 		AdminLoginEntity adminLoginEntity = adminLoginDao.findByUsernameAndPassword(adminLoginPojo.getUsername(),

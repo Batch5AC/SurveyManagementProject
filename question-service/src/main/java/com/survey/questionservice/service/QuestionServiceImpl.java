@@ -21,10 +21,8 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 
 		Optional result = queDao.findById(1);
-		System.out.println(result);
 		if (result.isPresent()) {
 			QuestionEntity queEntity = (QuestionEntity) result.get();
-			System.out.println(queEntity);
 			QuestionPojo quePojo = new QuestionPojo(queEntity.getqId(), queEntity.getQuestion1(),
 					queEntity.getQuestion2(), queEntity.getQuestion3(), queEntity.getQuestion4(),
 					queEntity.getQuestion5(), queEntity.getQuestion6());

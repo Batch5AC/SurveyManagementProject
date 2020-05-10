@@ -29,8 +29,9 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 
-	// Accepting the user credentials and calling the checkUser method of LoginserviceImpl
-	
+	// Accepting the user credentials and calling the checkUser method of
+	// LoginserviceImpl
+
 	@GetMapping("user")
 	public ResponseEntity<UserOutput> checkUser(@RequestHeader("Authorization") String data) {
 		BasicConfigurator.configure();
@@ -48,7 +49,7 @@ public class LoginController {
 	// serviceImpl
 	@GetMapping("admin")
 	public ResponseEntity<List<AdminDataPojo>> checkAdmin(@RequestHeader("Authorization") String data) {
-		// List<AdminDataPojo> checkAdmin(@RequestHeader("Authorization") String data) {
+		BasicConfigurator.configure();
 		LOG.info("Entered end point \'login/admin \' ");
 		String token[] = data.split(":");
 		AdminLoginPojo adminLoginPojo = new AdminLoginPojo();
@@ -64,10 +65,7 @@ public class LoginController {
 	// calling the fallback method using hystrix
 	@HystrixCommand(fallbackMethod = "getFallbackCatalog")
 	QuestionPojo getQuestions() {
-
 		RestTemplate restTemplate = new RestTemplate();
-		System.out.println("hi");
-
 		QuestionPojo questionpojo = restTemplate.getForObject("http://localhost:8182/question-service/survey/question",
 				QuestionPojo.class);
 		return questionpojo;
@@ -75,6 +73,9 @@ public class LoginController {
 
 	// Hystrix call back method when question service method is down
 	QuestionPojo getFallbackCatalog() {
+		BasicConfigurator.configure();
+		LOG.info("Entered fallback method ");
+		LOG.info("Exited end point \'login/admin \' ");
 		return new QuestionPojo(0, "server down", "server down", "server down", "server down", "server down",
 				"server down");
 	}
