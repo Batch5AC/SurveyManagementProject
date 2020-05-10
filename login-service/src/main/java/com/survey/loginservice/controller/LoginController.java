@@ -68,7 +68,7 @@ public class LoginController {
 		RestTemplate restTemplate = new RestTemplate();
 		System.out.println("hi");
 
-		QuestionPojo questionpojo = restTemplate.getForObject("http://localhost:8182/question-service/survey/questions",
+		QuestionPojo questionpojo = restTemplate.getForObject("http://localhost:8182/question-service/survey/question",
 				QuestionPojo.class);
 		return questionpojo;
 	}
