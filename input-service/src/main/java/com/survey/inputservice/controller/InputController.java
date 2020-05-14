@@ -4,11 +4,14 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.survey.inputservice.pojo.InputPojo;
+import com.survey.inputservice.pojo.StatPojo;
 import com.survey.inputservice.service.InputService;
 
 @CrossOrigin
@@ -30,4 +33,15 @@ public class InputController {
 		return inputService.addInput(inputPojo);
 	}
 
+	
+	@GetMapping("survey/{id}")
+	StatPojo getStat(@PathVariable("id") int id) {
+		return inputService.getStat(id);
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -24,7 +24,7 @@ public class InputServiceApplicationTests {
 
 	@Test
 	void testInput() throws Exception {
-        
+
 		InputEntity inputEntity = new InputEntity(0, 123, 3, 3, 2, 4, 5, 4);
 		InputPojo inputPojo = new InputPojo(0, 123, 3, 3, 2, 4, 5, 4);
 		when(dao.save(inputEntity)).thenReturn(inputEntity);
