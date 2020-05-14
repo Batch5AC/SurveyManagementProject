@@ -2,12 +2,12 @@ package com.survey.inputservice.service;
 
 
 import com.survey.inputservice.pojo.InputPojo;
-import com.survey.inputservice.pojo.StatPojo;
+import com.survey.inputservice.pojo.InputStatPojo;
 
 public interface InputService {
 
 	InputPojo addInput(InputPojo inputPojo);
 
-	StatPojo getStat(int id);
+	InputStatPojo getStat(int id);
 
 }

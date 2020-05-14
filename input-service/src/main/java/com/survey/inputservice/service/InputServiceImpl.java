@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.survey.inputservice.dao.InputDao;
 import com.survey.inputservice.entity.InputEntity;
 import com.survey.inputservice.pojo.InputPojo;
-import com.survey.inputservice.pojo.StatPojo;
+import com.survey.inputservice.pojo.InputStatPojo;
 
 @Service
 public class InputServiceImpl implements InputService {
@@ -35,7 +35,7 @@ public class InputServiceImpl implements InputService {
 	}
 
 	@Override
-	public StatPojo getStat(int id) {
+	public InputStatPojo getStat(int id) {
 		
 		
 		long totalcount=inputDao.count();
@@ -54,7 +54,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount; 
-			 StatPojo statPojo1=new StatPojo(stat1,stat2,stat3);
+			 InputStatPojo statPojo1=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo1;  
 		
 		  case 2:
@@ -64,7 +64,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount;
-			  StatPojo statPojo2=new StatPojo(stat1,stat2,stat3);
+			  InputStatPojo statPojo2=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo2;  
 		  case 3:
 			  count1=	inputDao.countByQuestion3(1);
@@ -73,7 +73,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount;
-			  StatPojo statPojo3=new StatPojo(stat1,stat2,stat3);
+			  InputStatPojo statPojo3=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo3; 
 		  case 4:
 			  count1=	inputDao.countByQuestion4(1);
@@ -82,7 +82,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount;
-			  StatPojo statPojo4=new StatPojo(stat1,stat2,stat3);
+			  InputStatPojo statPojo4=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo4; 
 		  case 5:
 			  count1=	inputDao.countByQuestion5(1);
@@ -91,7 +91,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount;
-			  StatPojo statPojo5=new StatPojo(stat1,stat2,stat3);
+			  InputStatPojo statPojo5=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo5; 
 		  case 6:
 			  count1=	inputDao.countByQuestion6(1);
@@ -100,7 +100,7 @@ public class InputServiceImpl implements InputService {
 			   stat1=count1*100/totalcount;
 			   stat2=count2*100/totalcount;
 			   stat3=count3*100/totalcount;
-			  StatPojo statPojo6=new StatPojo(stat1,stat2,stat3);
+			  InputStatPojo statPojo6=new InputStatPojo(stat1,stat2,stat3);
 			  return statPojo6; 
 		  
 		}

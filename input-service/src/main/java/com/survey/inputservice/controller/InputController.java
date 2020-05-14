@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.survey.inputservice.pojo.InputPojo;
-import com.survey.inputservice.pojo.StatPojo;
+import com.survey.inputservice.pojo.InputStatPojo;
 import com.survey.inputservice.service.InputService;
 
 @CrossOrigin
@@ -35,7 +35,7 @@ public class InputController {
 
 	
 	@GetMapping("survey/{id}")
-	StatPojo getStat(@PathVariable("id") int id) {
+	InputStatPojo getStat(@PathVariable("id") int id) {
 		return inputService.getStat(id);
 	}
 	
